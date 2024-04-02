@@ -1,0 +1,168 @@
+[gd_scene load_steps=6 format=3 uid="uid://d24avmu8mgap0"]
+
+[ext_resource type="Texture2D" uid="uid://ccs8unpu742o8" path="res://icon.svg" id="1_nvwii"]
+[ext_resource type="Script" path="res://resources/global/start_screen.gd" id="1_q2plu"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_40gqo"]
+font_size = 18
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_skrmg"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_mhvjx"]
+font_size = 36
+
+[node name="StartScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_q2plu")
+
+[node name="BGColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 28.825
+anchor_bottom = 16.2
+color = Color(0.329412, 0.105882, 0.533333, 1)
+
+[node name="DemoSelectorLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 521.0
+offset_top = 159.0
+offset_right = 619.0
+offset_bottom = 185.0
+text = "Demo Type
+"
+label_settings = SubResource("LabelSettings_40gqo")
+
+[node name="DemoSelector" type="OptionButton" parent="."]
+layout_mode = 0
+offset_left = 475.0
+offset_top = 191.0
+offset_right = 676.0
+offset_bottom = 222.0
+button_group = SubResource("ButtonGroup_skrmg")
+item_count = 6
+popup/item_0/text = "Topdown 2D"
+popup/item_0/id = 0
+popup/item_1/text = "Platformer 2D"
+popup/item_1/id = 1
+popup/item_2/text = "3D First Person"
+popup/item_2/id = 2
+popup/item_3/text = "Topdown 2.5D"
+popup/item_3/id = 3
+popup/item_4/text = "Turn Based Strategy"
+popup/item_4/id = 4
+popup/item_5/text = "Reatime Strategy"
+popup/item_5/id = 5
+
+[node name="HeaderLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 402.0
+offset_top = 100.0
+offset_right = 786.0
+offset_bottom = 150.0
+text = "The Multiplayer Demo"
+label_settings = SubResource("LabelSettings_mhvjx")
+
+[node name="PlayerDetailsPanel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 317.0
+offset_top = 238.0
+offset_right = 556.0
+offset_bottom = 504.0
+
+[node name="ColorPicker" type="ColorPickerButton" parent="PlayerDetailsPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 12.179
+anchor_top = 8.839
+anchor_right = 12.179
+anchor_bottom = 8.839
+offset_left = -2901.78
+offset_top = -2313.17
+offset_right = -2848.78
+offset_bottom = -2263.17
+
+[node name="NameLineEdit" type="LineEdit" parent="PlayerDetailsPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 69.0
+offset_top = 48.0
+offset_right = -18.0
+offset_bottom = -187.0
+grow_horizontal = 2
+grow_vertical = 2
+placeholder_text = "Player Name"
+
+[node name="Preview" type="Sprite2D" parent="PlayerDetailsPanel"]
+position = Vector2(118, 175)
+texture = ExtResource("1_nvwii")
+
+[node name="SubViewport" type="SubViewport" parent="PlayerDetailsPanel/Preview"]
+
+[node name="Label" type="Label" parent="PlayerDetailsPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 66.0
+offset_top = 6.0
+offset_right = -67.0
+offset_bottom = -237.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Player Details"
+
+[node name="ConnectionDetailsPanel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 624.0
+offset_top = 238.0
+offset_right = 781.0
+offset_bottom = 503.0
+
+[node name="HostButton" type="Button" parent="ConnectionDetailsPanel"]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 35.0
+offset_right = 126.0
+offset_bottom = 104.0
+text = "Host
+Game
+"
+
+[node name="ClientButton" type="Button" parent="ConnectionDetailsPanel"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 127.0
+offset_right = 125.0
+offset_bottom = 196.0
+text = "Join
+Game
+"
+
+[node name="ipv4LineEdit" type="LineEdit" parent="ConnectionDetailsPanel"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 213.0
+offset_right = 148.0
+offset_bottom = 244.0
+text = "127.0.0.1"
+
+[node name="Label" type="Label" parent="ConnectionDetailsPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 18.0
+offset_top = 5.0
+offset_right = -18.0
+offset_bottom = -236.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Connection Details"
+
+[connection signal="pressed" from="ConnectionDetailsPanel/HostButton" to="." method="_on_host_button_pressed"]
+[connection signal="pressed" from="ConnectionDetailsPanel/ClientButton" to="." method="_on_client_button_pressed"]

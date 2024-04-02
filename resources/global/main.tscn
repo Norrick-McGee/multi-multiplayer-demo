@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://b3jghfj0eu13n"]
+
+[ext_resource type="Script" path="res://resources/global/main.gd" id="1_4g7uw"]
+[ext_resource type="PackedScene" uid="uid://3fsvldc2xxoo" path="res://resources/TopDown2D/game_manager.tscn" id="2_6i4p0"]
+[ext_resource type="PackedScene" uid="uid://d24avmu8mgap0" path="res://resources/global/start_screen.tscn" id="2_8mlmu"]
+[ext_resource type="PackedScene" uid="uid://duqd2jguxky4" path="res://resources/Platform2D/game_manager.tscn" id="3_2ru0p"]
+
+[node name="Main" type="Node" node_paths=PackedStringArray("StartScreen")]
+script = ExtResource("1_4g7uw")
+TopDown2D = ExtResource("2_6i4p0")
+Platform2D = ExtResource("3_2ru0p")
+StartScreen = NodePath("StartScreen")
+
+[node name="StartScreen" parent="." node_paths=PackedStringArray("Main") instance=ExtResource("2_8mlmu")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1112.0
+offset_bottom = -608.0
+grow_horizontal = 2
+grow_vertical = 2
+Main = NodePath("..")

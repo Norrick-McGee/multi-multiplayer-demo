@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://d32k36ldmo3l8"]
+
+[ext_resource type="PackedScene" uid="uid://cpty5v0sbs7bd" path="res://resources/TopDown2D/actors/base_actor.tscn" id="1_4qadr"]
+[ext_resource type="Script" path="res://resources/TopDown2D/actors/player.gd" id="2_3rcpi"]
+[ext_resource type="Texture2D" uid="uid://ccs8unpu742o8" path="res://icon.svg" id="2_yxxka"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0mi2n"]
+size = Vector2(31, 31)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_53y1l"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+
+[node name="Player" instance=ExtResource("1_4qadr")]
+script = ExtResource("2_3rcpi")
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_0mi2n")
+
+[node name="Sprite" parent="." index="1"]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_yxxka")
+
+[node name="MovementSyncro" parent="." index="2"]
+replication_config = SubResource("SceneReplicationConfig_53y1l")
+
+[node name="Input" type="MultiplayerSynchronizer" parent="." index="3"]
+root_path = NodePath(".")
