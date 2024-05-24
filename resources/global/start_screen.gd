@@ -1,31 +1,39 @@
 extends Control
 
-const PORT = 6767
-
 @export var Main: Node
+const DEFAULT_PORT = 6767
 
 func get_player_attributes() -> Dictionary:
 	return {
 		'name':get_node("PlayerDetailsPanel/NameLineEdit").text
 	}
-
 func get_ipv4():
-	# TODO: get_node("ConnectionDetailsPanel/ipv4LineEdit").text validation
-	return '127.0.0.1'
+	var ipv4: String = $ConnectionDetailsPanel/ipv4LineEdit.text
+	if ipv4.is_valid_ip_address():
+		return ipv4
+	elif ipv4.is_empty():
+		return '127.0.0.1'
+	
 
 func _on_host_button_pressed():
-	# init multiplayer
-	var peer = ENetMultiplayerPeer.new()
-	peer.create_server(PORT)
-	multiplayer.multiplayer_peer = peer 
-	print("Multiplayer Started")
-
-	# start game
-	Main.start_game('host', get_player_attributes())
+	var game_context = {
+		"player":get_player_attributes(),
+		"client":{
+			'type':'host',
+			'port':DEFAULT_PORT
+		}
+	}
+	Main.start_game(game_context)
 
 
 func _on_client_button_pressed():
-	var peer = ENetMultiplayerPeer.new()
-	peer.create_client(get_ipv4(),PORT)
-	multiplayer.multiplayer_peer = peer 
-	Main.start_game('client', get_player_attributes())
+	var game_context = {
+		"player":get_player_attributes(),
+		"client":{
+			'type':'client',
+			'ipv4':get_ipv4(),
+			'port':DEFAULT_PORT
+		}
+	}
+	Main.start_game(game_context)
+
