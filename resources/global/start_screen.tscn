@@ -44,7 +44,6 @@ offset_bottom = 222.0
 button_group = SubResource("ButtonGroup_skrmg")
 item_count = 6
 popup/item_0/text = "Topdown 2D"
-popup/item_0/id = 0
 popup/item_1/text = "Platformer 2D"
 popup/item_1/id = 1
 popup/item_2/text = "3D First Person"

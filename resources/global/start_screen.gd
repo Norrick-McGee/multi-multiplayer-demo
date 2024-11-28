@@ -36,4 +36,3 @@ func _on_client_button_pressed():
 		}
 	}
 	Main.start_game(game_context)
-
