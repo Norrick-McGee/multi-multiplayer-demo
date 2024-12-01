@@ -10,7 +10,8 @@ Feel free to use these assets in your project, but be sure to give proper credit
 ![Screenshot of StartScreen for "The Multiplayer Demo"](screenshots/StartScreen.png)
 
 
+## 4 Person Lobby
+![Screenshot of a 4 person Multiplayer Lobby for "The Multiplayer Demo"](screenshots/4pLobby.png)
 
 
-## 4 person lobby
-![[Screenshot From 2024-12-01 10-22-08.png]]
+
