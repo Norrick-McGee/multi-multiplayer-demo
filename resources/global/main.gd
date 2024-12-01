@@ -59,9 +59,15 @@ func start_game(game_context: Dictionary):
 	multiplayer.multiplayer_peer = eNetPeer
 	
 	##############
-	# setting up the game world
+	# game world
 	##############
-	var scene_to_start: PackedScene = get_demo_scene_from_key(game_context['game_type'])
 	
-	# TODO: scene_to_start.start_me_up(once, you, start, me, up, I, never, stop)
+	# Init
+	var new_scene = get_demo_scene_from_key(game_context['game_type']).instantiate()
+	add_child(new_scene)
+	# TODO: Adjust properties
+	new_scene.position = Vector2(0, 0) 
+	
+	# Hide StartScreen 
 	StartScreen.hide()
+	StartScreen.queue_free()

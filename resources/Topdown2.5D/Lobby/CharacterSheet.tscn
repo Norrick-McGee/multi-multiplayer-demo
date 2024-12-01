@@ -1,0 +1,67 @@
+[gd_scene load_steps=3 format=3 uid="uid://dnmx48vs8o53y"]
+
+[ext_resource type="Script" path="res://resources/Topdown2.5D/Lobby/character_sheet.gd" id="1_7pnef"]
+[ext_resource type="PackedScene" uid="uid://cq7svnwtplexw" path="res://resources/Topdown2.5D/GameManager.tscn" id="1_lxr2b"]
+
+[node name="Panel" type="PanelContainer"]
+offset_right = 512.0
+offset_bottom = 512.0
+script = ExtResource("1_7pnef")
+
+[node name="CharacterSheet" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 6.26
+
+[node name="Label" type="Label" parent="CharacterSheet"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "Player1"
+
+[node name="GridContainer" type="GridContainer" parent="CharacterSheet"]
+layout_mode = 2
+columns = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="CharacterSheet/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="CharacterSheet/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+
+[node name="SubViewport" type="SubViewport" parent="CharacterSheet/GridContainer/SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(256, 256)
+render_target_update_mode = 4
+
+[node name="Demo" parent="CharacterSheet/GridContainer/SubViewportContainer/SubViewport" instance=ExtResource("1_lxr2b")]
+
+[node name="PanelContainer2" type="PanelContainer" parent="CharacterSheet/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+
+[node name="GridContainer2" type="GridContainer" parent="CharacterSheet"]
+layout_mode = 2
+size_flags_vertical = 3
+columns = 2
+
+[node name="Label" type="Label" parent="CharacterSheet/GridContainer2"]
+layout_mode = 2
+text = "Name: "
+
+[node name="LineEdit" type="LineEdit" parent="CharacterSheet/GridContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label2" type="Label" parent="CharacterSheet/GridContainer2"]
+layout_mode = 2
+text = "Color: "
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="CharacterSheet/GridContainer2"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_horizontal = 0
