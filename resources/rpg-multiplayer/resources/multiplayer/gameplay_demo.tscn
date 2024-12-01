@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://6f8qkokeqg7p"]
-
-[ext_resource type="PackedScene" uid="uid://c1c3snibtly15" path="res://resources/TileMap/TerrainMap.tscn" id="1_didt0"]
-
-[node name="GameplayDemo" type="Node2D"]
-
-[node name="TerrainMap" parent="." instance=ExtResource("1_didt0")]
