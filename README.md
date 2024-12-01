@@ -7,7 +7,7 @@ Feel free to use these assets in your project, but be sure to give proper credit
 
 # Screenshots
 ## Start Screen
-![Alt text](/Screenshot From 2024-12-01 10-22-08.png?raw=true "Optional Title")
+![Alt text](screenshots/Screenshot From 2024-12-01 10-22-08.png?raw=true "Optional Title")
 
 ## 4 person lobby
 ![[Screenshot From 2024-12-01 10-22-08.png]]
