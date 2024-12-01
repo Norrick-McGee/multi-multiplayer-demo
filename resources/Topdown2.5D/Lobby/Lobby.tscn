@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cat661tcnmlq7"]
 
-[ext_resource type="PackedScene" uid="uid://dnmx48vs8o53y" path="res://resources/Topdown2.5D/Lobby/CharacterSheet.tscn" id="1_6pnul"]
+[ext_resource type="PackedScene" uid="uid://dnmx48vs8o53y" path="res://resources/Topdown2.5D/Lobby/CharacterSheet.tscn" id="1_fdhsf"]
 
 [node name="Lobby" type="Control"]
 layout_mode = 3
@@ -48,21 +48,22 @@ text = "Start Game ->"
 layout_mode = 2
 size_flags_vertical = 6
 
-[node name="p1CharacterSheet" parent="MainPanel/VBoxContainer/HBoxContainer" instance=ExtResource("1_6pnul")]
+[node name="p1CharacterSheet" parent="MainPanel/VBoxContainer/HBoxContainer" instance=ExtResource("1_fdhsf")]
 layout_mode = 2
 size_flags_horizontal = 3
+label_text = "Player1"
 
-[node name="p2CharacterSheet" parent="MainPanel/VBoxContainer/HBoxContainer" instance=ExtResource("1_6pnul")]
+[node name="p2CharacterSheet" parent="MainPanel/VBoxContainer/HBoxContainer" instance=ExtResource("1_fdhsf")]
 layout_mode = 2
 size_flags_horizontal = 3
-label = "Player2"
+label_text = "Player2"
 
-[node name="p3CharacterSheet" parent="MainPanel/VBoxContainer/HBoxContainer" instance=ExtResource("1_6pnul")]
+[node name="p3CharacterSheet" parent="MainPanel/VBoxContainer/HBoxContainer" instance=ExtResource("1_fdhsf")]
 layout_mode = 2
 size_flags_horizontal = 3
-label = "Player3"
+label_text = "Player3"
 
-[node name="p4CharacterSheet" parent="MainPanel/VBoxContainer/HBoxContainer" instance=ExtResource("1_6pnul")]
+[node name="p4CharacterSheet" parent="MainPanel/VBoxContainer/HBoxContainer" instance=ExtResource("1_fdhsf")]
 layout_mode = 2
 size_flags_horizontal = 3
-label = "Player4"
+label_text = "Player4"

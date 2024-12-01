@@ -1,7 +1,8 @@
 @tool
 extends PanelContainer
 
-@export var label: String = "Player1"
-
-func _ready():
-	$CharacterSheet/Label.text = label
+@export var label_text: String:
+	set(value):
+		$CharacterSheet/Label.text = value
+	get():
+		return $CharacterSheet/Label.text
