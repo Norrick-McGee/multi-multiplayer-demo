@@ -1,7 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://d24avmu8mgap0"]
+[gd_scene load_steps=9 format=3 uid="uid://d24avmu8mgap0"]
 
-[ext_resource type="Texture2D" uid="uid://ccs8unpu742o8" path="res://icon.svg" id="1_nvwii"]
-[ext_resource type="Script" path="res://resources/global/start_screen.gd" id="1_q2plu"]
+[ext_resource type="Script" path="res://resources/global/start_screen/start_screen.gd" id="1_q2plu"]
+[ext_resource type="Script" path="res://resources/global/start_screen/Preview_Mesh.gd" id="2_w2fsp"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_40gqo"]
 font_size = 18
@@ -10,6 +10,13 @@ font_size = 18
 
 [sub_resource type="LabelSettings" id="LabelSettings_mhvjx"]
 font_size = 36
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_qacut"]
+viewport_path = NodePath("UserDetailsPanel/Preview/SubViewport")
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_copcr"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ae03o"]
 
 [node name="StartScreen" type="Control"]
 layout_mode = 3
@@ -42,18 +49,6 @@ offset_top = 191.0
 offset_right = 676.0
 offset_bottom = 222.0
 button_group = SubResource("ButtonGroup_skrmg")
-item_count = 6
-popup/item_0/text = "Topdown 2D"
-popup/item_1/text = "Platformer 2D"
-popup/item_1/id = 1
-popup/item_2/text = "3D First Person"
-popup/item_2/id = 2
-popup/item_3/text = "Topdown 2.5D"
-popup/item_3/id = 3
-popup/item_4/text = "Turn Based Strategy"
-popup/item_4/id = 4
-popup/item_5/text = "Reatime Strategy"
-popup/item_5/id = 5
 
 [node name="HeaderLabel" type="Label" parent="."]
 layout_mode = 0
@@ -64,14 +59,14 @@ offset_bottom = 150.0
 text = "The Multiplayer Demo"
 label_settings = SubResource("LabelSettings_mhvjx")
 
-[node name="PlayerDetailsPanel" type="Panel" parent="."]
+[node name="UserDetailsPanel" type="Panel" parent="."]
 layout_mode = 0
 offset_left = 317.0
 offset_top = 238.0
 offset_right = 556.0
 offset_bottom = 504.0
 
-[node name="ColorPicker" type="ColorPickerButton" parent="PlayerDetailsPanel"]
+[node name="ColorPicker" type="ColorPickerButton" parent="UserDetailsPanel"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 12.179
@@ -83,7 +78,7 @@ offset_top = -2313.17
 offset_right = -2848.78
 offset_bottom = -2263.17
 
-[node name="NameLineEdit" type="LineEdit" parent="PlayerDetailsPanel"]
+[node name="NameLineEdit" type="LineEdit" parent="UserDetailsPanel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -94,15 +89,28 @@ offset_right = -18.0
 offset_bottom = -187.0
 grow_horizontal = 2
 grow_vertical = 2
-placeholder_text = "Player Name"
+placeholder_text = "User Name"
 
-[node name="Preview" type="Sprite2D" parent="PlayerDetailsPanel"]
-position = Vector2(118, 175)
-texture = ExtResource("1_nvwii")
+[node name="Preview" type="Sprite2D" parent="UserDetailsPanel"]
+position = Vector2(122, 171)
+scale = Vector2(0.246094, 0.197266)
+texture = SubResource("ViewportTexture_qacut")
 
-[node name="SubViewport" type="SubViewport" parent="PlayerDetailsPanel/Preview"]
+[node name="SubViewport" type="SubViewport" parent="UserDetailsPanel/Preview"]
 
-[node name="Label" type="Label" parent="PlayerDetailsPanel"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="UserDetailsPanel/Preview/SubViewport" node_paths=PackedStringArray("color_picker")]
+mesh = SubResource("CapsuleMesh_copcr")
+surface_material_override/0 = SubResource("StandardMaterial3D_ae03o")
+script = ExtResource("2_w2fsp")
+color_picker = NodePath("../../../ColorPicker")
+
+[node name="Camera3D" type="Camera3D" parent="UserDetailsPanel/Preview/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 0.929873, 0.367881, 0, -0.367881, 0.929873, 0, 1.07879, 2.14059)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="UserDetailsPanel/Preview/SubViewport"]
+transform = Transform3D(-0.895631, -0.415864, -0.157805, -0.188985, 0.0346165, 0.98137, -0.402654, 0.908768, -0.109596, 0, 4.54367, 0)
+
+[node name="Label" type="Label" parent="UserDetailsPanel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -113,7 +121,7 @@ offset_right = -67.0
 offset_bottom = -237.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Player Details"
+text = "User Details"
 
 [node name="ConnectionDetailsPanel" type="Panel" parent="."]
 layout_mode = 0

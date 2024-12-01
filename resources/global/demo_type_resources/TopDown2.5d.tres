@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="GameMode" load_steps=3 format=3 uid="uid://dgr5lskmnlq42"]
+
+[ext_resource type="PackedScene" uid="uid://cq7svnwtplexw" path="res://resources/Topdown2.5D/Demo.tscn" id="1_bynbn"]
+[ext_resource type="Script" path="res://resources/global/demo_type_resources/GameModeResource.gd" id="1_db75r"]
+
+[resource]
+script = ExtResource("1_db75r")
+game_type = "Topdown 2.5d"
+demo_path = ExtResource("1_bynbn")
