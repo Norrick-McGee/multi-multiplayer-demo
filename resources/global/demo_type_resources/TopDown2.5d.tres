@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="GameMode" load_steps=3 format=3 uid="uid://dgr5lskmnlq42"]
 
 [ext_resource type="Script" path="res://resources/global/demo_type_resources/GameModeResource.gd" id="1_db75r"]
-[ext_resource type="PackedScene" uid="uid://cat661tcnmlq7" path="res://resources/Topdown2.5D/Lobby.tscn" id="1_k6m1d"]
+[ext_resource type="PackedScene" uid="uid://cat661tcnmlq7" path="res://resources/Topdown2.5D/Lobby/Lobby.tscn" id="1_k6m1d"]
 
 [resource]
 script = ExtResource("1_db75r")

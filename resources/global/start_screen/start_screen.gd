@@ -34,7 +34,7 @@ func _on_host_button_pressed():
 func _on_client_button_pressed():
 	var game_context = {
 		"user":get_user_attributes(),
-		"client":{
+		"conn":{
 			'type':'client',
 			'ipv4':get_ipv4(),
 			'port':6767

@@ -1,3 +1,4 @@
+@tool
 extends PanelContainer
 
 @export var label: String = "Player1"
