@@ -7,7 +7,6 @@ Feel free to use these assets in your project, but be sure to give proper credit
 
 # Screenshots
 ## Start Screen
-![Start Screen Screenshot](screenshots/Screenshot From 2024-12-01 10-22-04.png)
+![[Screenshot From 2024-12-01 10-22-04.png]]
 ## 4 person lobby
-![Screenshot 2](Screenshot From 2024-12-01 10-22-08.png)
-
+![[Screenshot From 2024-12-01 10-22-08.png]]
