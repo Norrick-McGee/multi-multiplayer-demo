@@ -16,7 +16,6 @@ func get_ipv4():
 
 func set_game_types(list_of_game_types:Array[String]):
 	for game_type in list_of_game_types:
-		
 		$DemoSelector.add_item(game_type)
 func get_game_type():
 	return $DemoSelector.get_item_text($DemoSelector.selected)

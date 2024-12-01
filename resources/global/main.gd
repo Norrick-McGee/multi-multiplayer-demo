@@ -7,7 +7,7 @@ func get_demo_scene_from_key(key):
 	var packed_scene: PackedScene
 	for i in DemoSelectionArray: 
 		if i.game_type == key:
-			packed_scene =  i.demo_path
+			packed_scene = i.demo_path
 	return packed_scene
 
 var eNetPeer = ENetMultiplayerPeer.new()
@@ -33,7 +33,7 @@ func start_game(game_context: Dictionary):
 	{
 		"player":{
 			'name':'bubbins',
-			'color': Color(255.0, 255.0, 0.0, 0.999)
+			'color': Color(255.0, 255.0, 0.0, 0.999) # not yet implimented
 		},
 		"client":{
 			'type':'client',
@@ -42,13 +42,6 @@ func start_game(game_context: Dictionary):
 		}
 		"game_type":"Topdown 2D" || "Platformer 2D" # not yet implimented
 	}
-	valid game_type's:
-		Topdown 2D
-		Platform 2D
-		FPS
-		Topdown 2.5D - In Progress
-		Turn Based Strategy 
-		Realtime Strategy
 	"""
 	if not valid_context(game_context): return
 	

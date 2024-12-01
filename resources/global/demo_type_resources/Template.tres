@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="GameMode" load_steps=3 format=3 uid="uid://gbjdjlj2qg0b"]
 
-[ext_resource type="PackedScene" uid="uid://cq7svnwtplexw" path="res://resources/Topdown2.5D/Demo.tscn" id="1_2igge"]
+[ext_resource type="PackedScene" uid="uid://cq7svnwtplexw" path="res://resources/Topdown2.5D/GameManager.tscn" id="1_2igge"]
 [ext_resource type="Script" path="res://resources/global/demo_type_resources/GameModeResource.gd" id="1_tewue"]
 
 [resource]

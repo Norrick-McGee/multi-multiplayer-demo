@@ -1,0 +1,63 @@
+[gd_scene load_steps=2 format=3 uid="uid://cat661tcnmlq7"]
+
+[ext_resource type="PackedScene" uid="uid://cq7svnwtplexw" path="res://resources/Topdown2.5D/GameManager.tscn" id="1_t8cga"]
+
+[node name="Lobby" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainPanel" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 651.0
+color = Color(0.162066, 0.162066, 0.162066, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainPanel"]
+layout_mode = 2
+offset_right = 1150.0
+offset_bottom = 44.0
+
+[node name="PanelContainer" type="PanelContainer" parent="MainPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="HeaderHBox" type="HBoxContainer" parent="MainPanel/VBoxContainer/PanelContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="BackButton" type="Button" parent="MainPanel/VBoxContainer/PanelContainer/HeaderHBox"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "<- Main Menu"
+
+[node name="Label" type="Label" parent="MainPanel/VBoxContainer/PanelContainer/HeaderHBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Lobby
+"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="MainPanel/VBoxContainer/PanelContainer/HeaderHBox"]
+layout_mode = 2
+text = "Start Game ->"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainPanel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 6.26
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="MainPanel/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="SubViewport" type="SubViewport" parent="MainPanel/VBoxContainer/HBoxContainer/VBoxContainer/SubViewportContainer"]
+transparent_bg = true
+size = Vector2i(256, 256)
+
+[node name="Demo" parent="MainPanel/VBoxContainer/HBoxContainer/VBoxContainer/SubViewportContainer/SubViewport" instance=ExtResource("1_t8cga")]
