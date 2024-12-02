@@ -1,13 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://b3jghfj0eu13n"]
+[gd_scene load_steps=7 format=3 uid="uid://b3jghfj0eu13n"]
 
-[ext_resource type="Script" path="res://resources/global/main.gd" id="1_4g7uw"]
+[ext_resource type="Script" path="res://resources/global/main/main.gd" id="1_4g7uw"]
 [ext_resource type="PackedScene" uid="uid://d24avmu8mgap0" path="res://resources/global/start_screen/start_screen.tscn" id="2_8mlmu"]
 [ext_resource type="Script" path="res://resources/global/demo_type_resources/GameModeResource.gd" id="2_kn1t8"]
 [ext_resource type="Resource" uid="uid://dgr5lskmnlq42" path="res://resources/global/demo_type_resources/TopDown2.5d.tres" id="3_8die0"]
+[ext_resource type="Script" path="res://resources/global/main/NetMan.gd" id="5_s02yn"]
+[ext_resource type="Script" path="res://resources/global/main/GameMan.gd" id="6_ux8ws"]
 
-[node name="Main" type="Node" node_paths=PackedStringArray("StartScreen")]
+[node name="Main" type="Node"]
 script = ExtResource("1_4g7uw")
-StartScreen = NodePath("StartScreen")
 DemoSelectionArray = Array[ExtResource("2_kn1t8")]([ExtResource("3_8die0")])
 
 [node name="StartScreen" parent="." instance=ExtResource("2_8mlmu")]
@@ -18,3 +19,9 @@ offset_right = -1112.0
 offset_bottom = -608.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="NetMan" type="Node" parent="."]
+script = ExtResource("5_s02yn")
+
+[node name="GameMan" type="Node" parent="."]
+script = ExtResource("6_ux8ws")

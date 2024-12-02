@@ -1,8 +1,9 @@
 extends Node
 
-@export var StartScreen: StartScreen
-
+@onready var StartScreen: StartScreen = $StartScreen
+@onready var NetMan: NetMan = $NetMan
 @export var DemoSelectionArray: Array[GameMode]
+
 func get_demo_scene_from_key(key):
 	var packed_scene: PackedScene
 	for i in DemoSelectionArray: 
@@ -32,13 +33,10 @@ func start_game(game_context: Dictionary):
 	game_context (Dictionary):
 	{
 		"player":{
-			'name':'bubbins',
-			'color': Color(255.0, 255.0, 0.0, 0.999) # not yet implimented
+			'name':'bubbins', 'color': Color(255.0, 255.0, 0.0, 0.999) # not yet implimented
 		},
 		"client":{
-			'type':'client',
-			'ipv4':'127.0.0.1',
-			'port':6767
+			'type':'client', 'ipv4':'127.0.0.1', 'port':6767
 		}
 		"game_type":"Topdown 2D" || "Platformer 2D" # not yet implimented
 	}
@@ -48,15 +46,8 @@ func start_game(game_context: Dictionary):
 	##############
 	# Networking
 	##############
-	
-	if game_context['conn']['type'].to_lower() == 'host':
-		eNetPeer.create_server(game_context['conn']['port'])
-	elif game_context['conn']['type'].to_lower() == 'client':
-		eNetPeer.create_client(
-			game_context['conn']['ipv4'],
-			game_context['conn']['port']
-			)
-	multiplayer.multiplayer_peer = eNetPeer
+	NetMan.conn_init(game_context['conn'])
+
 	
 	##############
 	# game world

@@ -18,8 +18,6 @@ Feel free to use these assets in your project, but be sure to give proper credit
 This Terrain Map borrow HEAVILY from 
 [Dual-Tilemap-System from Jess-Hammer](https://github.com/jess-hammer/dual-grid-tilemap-system-godot) 
 and [jess::codes video on Youtube](https://www.youtube.com/watch?v=jEWFSv3ivTg)
-
-
 ![Screenshot of a custom Godot TileMapLayer](screenshots/TerrainMap.png)
 
 

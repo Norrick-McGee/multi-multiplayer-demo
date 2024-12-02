@@ -3,10 +3,12 @@
 [ext_resource type="Script" path="res://resources/Topdown2.5D/Lobby/character_sheet.gd" id="1_7pnef"]
 [ext_resource type="PackedScene" uid="uid://cq7svnwtplexw" path="res://resources/Topdown2.5D/GameManager.tscn" id="1_lxr2b"]
 
-[node name="Panel" type="PanelContainer"]
+[node name="Panel" type="PanelContainer" node_paths=PackedStringArray("TitleLabel")]
 offset_right = 512.0
 offset_bottom = 512.0
 script = ExtResource("1_7pnef")
+active = null
+TitleLabel = NodePath("CharacterSheet/Label")
 
 [node name="CharacterSheet" type="VBoxContainer" parent="."]
 layout_mode = 2
@@ -23,7 +25,7 @@ text = "Player1"
 layout_mode = 2
 columns = 3
 
-[node name="PanelContainer" type="PanelContainer" parent="CharacterSheet/GridContainer"]
+[node name="LBufferPanel" type="PanelContainer" parent="CharacterSheet/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 2
 
@@ -40,28 +42,32 @@ render_target_update_mode = 4
 
 [node name="Demo" parent="CharacterSheet/GridContainer/SubViewportContainer/SubViewport" instance=ExtResource("1_lxr2b")]
 
-[node name="PanelContainer2" type="PanelContainer" parent="CharacterSheet/GridContainer"]
+[node name="RBufferPanel" type="PanelContainer" parent="CharacterSheet/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 10
 
 [node name="GridContainer2" type="GridContainer" parent="CharacterSheet"]
 layout_mode = 2
 size_flags_vertical = 3
-columns = 2
+columns = 4
 
-[node name="Label" type="Label" parent="CharacterSheet/GridContainer2"]
+[node name="NameLabel" type="Label" parent="CharacterSheet/GridContainer2"]
 layout_mode = 2
 text = "Name: "
 
-[node name="LineEdit" type="LineEdit" parent="CharacterSheet/GridContainer2"]
+[node name="NameLineEdit" type="LineEdit" parent="CharacterSheet/GridContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.75
 
-[node name="Label2" type="Label" parent="CharacterSheet/GridContainer2"]
+[node name="ColorLabel" type="Label" parent="CharacterSheet/GridContainer2"]
 layout_mode = 2
+size_flags_stretch_ratio = 0.0
 text = "Color: "
 
 [node name="ColorPickerButton" type="ColorPickerButton" parent="CharacterSheet/GridContainer2"]
-custom_minimum_size = Vector2(24, 24)
+custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
-size_flags_horizontal = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 1.42

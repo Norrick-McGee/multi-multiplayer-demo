@@ -1,8 +1,11 @@
 @tool
 extends PanelContainer
+@export var active: bool = true
 
-@export var label_text: String:
+@export var label_text: String =  "Player1":
 	set(value):
-		$CharacterSheet/Label.text = value
+		TitleLabel.text = value
 	get():
-		return $CharacterSheet/Label.text
+		return TitleLabel.text
+
+@export var TitleLabel: Label
