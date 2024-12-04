@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cat661tcnmlq7"]
+[gd_scene load_steps=3 format=3 uid="uid://cat661tcnmlq7"]
 
 [ext_resource type="PackedScene" uid="uid://dnmx48vs8o53y" path="res://resources/Topdown2.5D/Lobby/CharacterSheet.tscn" id="1_fdhsf"]
+[ext_resource type="Script" path="res://resources/Topdown2.5D/Lobby/chat_box.gd" id="2_xi1sk"]
 
 [node name="Lobby" type="Control"]
 layout_mode = 3
@@ -21,26 +22,26 @@ layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 649.0
 
-[node name="PanelContainer" type="PanelContainer" parent="MainPanel/VBoxContainer"]
+[node name="HeaderPanel" type="PanelContainer" parent="MainPanel/VBoxContainer"]
 layout_mode = 2
 
-[node name="HeaderHBox" type="HBoxContainer" parent="MainPanel/VBoxContainer/PanelContainer"]
+[node name="HeaderHBox" type="HBoxContainer" parent="MainPanel/VBoxContainer/HeaderPanel"]
 layout_mode = 2
 alignment = 1
 
-[node name="BackButton" type="Button" parent="MainPanel/VBoxContainer/PanelContainer/HeaderHBox"]
+[node name="BackButton" type="Button" parent="MainPanel/VBoxContainer/HeaderPanel/HeaderHBox"]
 layout_mode = 2
 size_flags_horizontal = 0
 text = "<- Main Menu"
 
-[node name="Label" type="Label" parent="MainPanel/VBoxContainer/PanelContainer/HeaderHBox"]
+[node name="Label" type="Label" parent="MainPanel/VBoxContainer/HeaderPanel/HeaderHBox"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Lobby
 "
 horizontal_alignment = 1
 
-[node name="Button" type="Button" parent="MainPanel/VBoxContainer/PanelContainer/HeaderHBox"]
+[node name="Button" type="Button" parent="MainPanel/VBoxContainer/HeaderPanel/HeaderHBox"]
 layout_mode = 2
 text = "Start Game ->"
 
@@ -56,17 +57,34 @@ active = true
 [node name="p2CharacterSheet" parent="MainPanel/VBoxContainer/HBoxContainer" instance=ExtResource("1_fdhsf")]
 layout_mode = 2
 size_flags_horizontal = 3
-active = true
+active = false
 label_text = "Player2"
 
 [node name="p3CharacterSheet" parent="MainPanel/VBoxContainer/HBoxContainer" instance=ExtResource("1_fdhsf")]
 layout_mode = 2
 size_flags_horizontal = 3
-active = true
+active = false
 label_text = "Player3"
 
 [node name="p4CharacterSheet" parent="MainPanel/VBoxContainer/HBoxContainer" instance=ExtResource("1_fdhsf")]
 layout_mode = 2
 size_flags_horizontal = 3
-active = true
+active = false
 label_text = "Player4"
+
+[node name="ChatBox" type="VBoxContainer" parent="MainPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("2_xi1sk")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MainPanel/VBoxContainer/ChatBox"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Chatter1: hi
+Chatter2: hi
+*Chatter2 has disconnected*"
+
+[node name="LineEdit" type="LineEdit" parent="MainPanel/VBoxContainer/ChatBox"]
+layout_mode = 2
+
+[connection signal="text_submitted" from="MainPanel/VBoxContainer/ChatBox/LineEdit" to="MainPanel/VBoxContainer/ChatBox" method="_on_line_edit_text_submitted"]

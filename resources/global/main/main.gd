@@ -53,7 +53,7 @@ func start_game(game_context: Dictionary):
 	# game world
 	##############
 	
-	# Init
+	# Init          # This is kinda like indexing DemoSelectionArray as if it were a dictionary
 	var new_scene = get_demo_scene_from_key(game_context['game_type']).instantiate()
 	add_child(new_scene)
 	# TODO: Adjust properties
