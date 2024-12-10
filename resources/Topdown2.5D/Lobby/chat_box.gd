@@ -13,13 +13,16 @@ func update_chat_display():
 func format_message(message:Dictionary):
 	return "[{timestamp}] {sender}: {content}".format(message)
 
-func _on_line_edit_text_submitted(new_text):
+func add_chat_and_update_display(chat):
 	chat.append({
 		"timestamp": Time.get_datetime_string_from_system(),
 		"sender": "Player1",
 		"receiver": "Team1", # Optional, can be null for "All Chat"
 		"chat_type": "Team Chat", # Enum or string: "All Chat", "Team Chat", "Whisper"
-		"content": new_text
+		"content": chat
 	})
 	update_chat_display()
+
+func _on_line_edit_text_submitted(new_text):
+	add_chat_and_update_display(new_text)
 	chat_edit.clear()

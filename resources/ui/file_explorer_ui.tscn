@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://r5axxpo450cc"]
+
+[node name="FileExplorerUI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HSplitContainer" type="HSplitContainer" parent="."]
+layout_mode = 0
+offset_right = 364.0
+offset_bottom = 40.0
+
+[node name="ShortcutsPanel" type="VBoxContainer" parent="HSplitContainer"]
+layout_mode = 2
+
+[node name="Header" type="PanelContainer" parent="HSplitContainer/ShortcutsPanel"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HSplitContainer/ShortcutsPanel/Header"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="HSplitContainer/ShortcutsPanel/Header/HBoxContainer"]
+layout_mode = 2
+text = "⌕"
+
+[node name="Label" type="Label" parent="HSplitContainer/ShortcutsPanel/Header/HBoxContainer"]
+layout_mode = 2
+text = "Files "
+
+[node name="Button2" type="Button" parent="HSplitContainer/ShortcutsPanel/Header/HBoxContainer"]
+layout_mode = 2
+text = "☰"
+
+[node name="Shortcuts" type="PanelContainer" parent="HSplitContainer/ShortcutsPanel"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/ShortcutsPanel/Shortcuts"]
+layout_mode = 2
+
+[node name="Main" type="VBoxContainer" parent="HSplitContainer"]
+layout_mode = 2
+
+[node name="Header" type="PanelContainer" parent="HSplitContainer/Main"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HSplitContainer/Main/Header"]
+layout_mode = 2
+
+[node name="BackButton" type="Button" parent="HSplitContainer/Main/Header/HBoxContainer"]
+layout_mode = 2
+text = "<"
+
+[node name="ForwardButton" type="Button" parent="HSplitContainer/Main/Header/HBoxContainer"]
+layout_mode = 2
+text = ">"
+
+[node name="pathLineEditPanel" type="PanelContainer" parent="HSplitContainer/Main/Header/HBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HSplitContainer/Main/Header/HBoxContainer/pathLineEditPanel"]
+layout_mode = 2
+
+[node name="LineEdit" type="LineEdit" parent="HSplitContainer/Main/Header/HBoxContainer/pathLineEditPanel/HBoxContainer"]
+layout_mode = 2
+
+[node name="Button3" type="Button" parent="HSplitContainer/Main/Header/HBoxContainer/pathLineEditPanel/HBoxContainer"]
+layout_mode = 2
+text = "⋮"
+
+[node name="SearchCurrentFolder" type="Button" parent="HSplitContainer/Main/Header/HBoxContainer"]
+layout_mode = 2
+text = "🗀⌕"
+
+[node name="Button" type="Button" parent="HSplitContainer/Main/Header/HBoxContainer"]
+layout_mode = 2
+text = "View Type"
+
+[node name="FileExplorer" type="PanelContainer" parent="HSplitContainer/Main"]
+layout_mode = 2

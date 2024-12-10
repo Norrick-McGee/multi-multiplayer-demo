@@ -3,7 +3,6 @@ class_name NetMan
 
 var eNetPeer = ENetMultiplayerPeer.new()
 
-
 func conn_init(conn:Dictionary):
 	"""
 	conn = {
@@ -12,6 +11,9 @@ func conn_init(conn:Dictionary):
 			'port':6767
 		}
 	"""
+	# Future TODO: I think that GameMan will change some traits in this node,
+	# So make sure to reset NetMan on init. 
+	# usecase: changing from 1 game mode to another, 1 game mode might allow re-joins, while another might not.
 	# TODO: Add a bunch of stuff for handling player connects, disconnects, reconnects etc.
 	
 	if conn['type'].to_lower() == 'host':
