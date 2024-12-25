@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpwyoc5ogk5q8"]
+
+[ext_resource type="MeshLibrary" uid="uid://cyqwnoethby3y" path="res://resources/DrawnNorth3dSim/rassets/MeshLibrary.tres" id="1_xqy8y"]
+[ext_resource type="PackedScene" uid="uid://dgessyt8swxdd" path="res://resources/DrawnNorth3dSim/squirrel.tscn" id="2_fgi72"]
+
+[node name="GridMap" type="GridMap"]
+mesh_library = ExtResource("1_xqy8y")
+data = {
+"cells": PackedInt32Array(65535, 0, 6, 65535, 1, 13, 65535, 2, 1048584, 0, 2, 655368)
+}
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="Squirrel" parent="." instance=ExtResource("2_fgi72")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.36521, 1.67051, 3.17848)
+
+[node name="Camera3D" type="Camera3D" parent="Squirrel"]
+transform = Transform3D(1, 0, 0, 0, 0.914162, 0.405349, 0, -0.405349, 0.914162, 0.512419, 0.579752, 1.47056)

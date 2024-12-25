@@ -26,6 +26,12 @@ func _ready():
 func valid_context(game_context: Dictionary):
 	return true
 
+func is_2d(scene):
+	pass
+	
+func is_3d(scene):
+	pass
+
 func start_game(game_context: Dictionary):
 	"""
 	args
@@ -57,7 +63,14 @@ func start_game(game_context: Dictionary):
 	var new_scene = get_demo_scene_from_key(game_context['game_type']).instantiate()
 	add_child(new_scene)
 	# TODO: Adjust properties
-	new_scene.position = Vector2(0, 0) 
+	if new_scene is Node2D:
+		print("This is a 2D node.")
+		new_scene.position = Vector2(0, 0) 
+	elif new_scene is Node3D:
+		print("This is a 3D node.")
+	else:
+		print("This is neither a 2D nor a 3D node.")
+	
 	
 	# Hide StartScreen 
 	StartScreen.hide()

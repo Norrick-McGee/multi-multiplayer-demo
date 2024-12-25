@@ -1,0 +1,132 @@
+[gd_scene load_steps=8 format=3 uid="uid://cm7hbn6novkqo"]
+
+[ext_resource type="PackedScene" uid="uid://dgessyt8swxdd" path="res://resources/DrawnNorth3dSim/squirrel.tscn" id="1_l0o6b"]
+[ext_resource type="Script" path="res://resources/DrawnNorth3dSim/demo_grid.gd" id="2_jyd43"]
+
+[sub_resource type="MeshLibrary" id="MeshLibrary_uj6yt"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4rr12"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rd0ue"]
+albedo_color = Color(0, 0.419608, 0.0705882, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_mg3nh"]
+material = SubResource("StandardMaterial3D_rd0ue")
+size = Vector3(1, 0.1, 1)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_xwub5"]
+data = PackedVector3Array(-0.5, 0.05, 0.5, 0.5, 0.05, 0.5, -0.5, -0.05, 0.5, 0.5, 0.05, 0.5, 0.5, -0.05, 0.5, -0.5, -0.05, 0.5, 0.5, 0.05, -0.5, -0.5, 0.05, -0.5, 0.5, -0.05, -0.5, -0.5, 0.05, -0.5, -0.5, -0.05, -0.5, 0.5, -0.05, -0.5, 0.5, 0.05, 0.5, 0.5, 0.05, -0.5, 0.5, -0.05, 0.5, 0.5, 0.05, -0.5, 0.5, -0.05, -0.5, 0.5, -0.05, 0.5, -0.5, 0.05, -0.5, -0.5, 0.05, 0.5, -0.5, -0.05, -0.5, -0.5, 0.05, 0.5, -0.5, -0.05, 0.5, -0.5, -0.05, -0.5, 0.5, 0.05, 0.5, -0.5, 0.05, 0.5, 0.5, 0.05, -0.5, -0.5, 0.05, 0.5, -0.5, 0.05, -0.5, 0.5, 0.05, -0.5, -0.5, -0.05, 0.5, 0.5, -0.05, 0.5, -0.5, -0.05, -0.5, 0.5, -0.05, 0.5, 0.5, -0.05, -0.5, -0.5, -0.05, -0.5)
+
+[node name="Simulation3D" type="Node3D"]
+
+[node name="Squirrel" parent="." instance=ExtResource("1_l0o6b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.537376, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.660533, 1.34017)
+
+[node name="NorthMark" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37491, 1)
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = SubResource("MeshLibrary_uj6yt")
+physics_material = SubResource("PhysicsMaterial_4rr12")
+script = ExtResource("2_jyd43")
+
+[node name="Tile1" type="MeshInstance3D" parent="GridMap"]
+mesh = SubResource("BoxMesh_mg3nh")
+skeleton = NodePath("StaticBody")
+
+[node name="StaticBody" type="StaticBody3D" parent="GridMap/Tile1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GridMap/Tile1/StaticBody"]
+shape = SubResource("ConcavePolygonShape3D_xwub5")
+
+[node name="Tile2" type="MeshInstance3D" parent="GridMap"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+mesh = SubResource("BoxMesh_mg3nh")
+skeleton = NodePath("StaticBody")
+
+[node name="StaticBody" type="StaticBody3D" parent="GridMap/Tile2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GridMap/Tile2/StaticBody"]
+shape = SubResource("ConcavePolygonShape3D_xwub5")
+
+[node name="Tile3" type="MeshInstance3D" parent="GridMap"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+mesh = SubResource("BoxMesh_mg3nh")
+skeleton = NodePath("StaticBody")
+
+[node name="StaticBody" type="StaticBody3D" parent="GridMap/Tile3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GridMap/Tile3/StaticBody"]
+shape = SubResource("ConcavePolygonShape3D_xwub5")
+
+[node name="Tile4" type="MeshInstance3D" parent="GridMap"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+mesh = SubResource("BoxMesh_mg3nh")
+skeleton = NodePath("StaticBody")
+
+[node name="StaticBody" type="StaticBody3D" parent="GridMap/Tile4"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GridMap/Tile4/StaticBody"]
+shape = SubResource("ConcavePolygonShape3D_xwub5")
+
+[node name="Tile5" type="MeshInstance3D" parent="GridMap"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
+mesh = SubResource("BoxMesh_mg3nh")
+skeleton = NodePath("StaticBody")
+
+[node name="StaticBody" type="StaticBody3D" parent="GridMap/Tile5"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GridMap/Tile5/StaticBody"]
+shape = SubResource("ConcavePolygonShape3D_xwub5")
+
+[node name="Tile6" type="MeshInstance3D" parent="GridMap"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 2)
+mesh = SubResource("BoxMesh_mg3nh")
+skeleton = NodePath("StaticBody")
+
+[node name="StaticBody" type="StaticBody3D" parent="GridMap/Tile6"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GridMap/Tile6/StaticBody"]
+shape = SubResource("ConcavePolygonShape3D_xwub5")
+
+[node name="Tile7" type="MeshInstance3D" parent="GridMap"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+mesh = SubResource("BoxMesh_mg3nh")
+skeleton = NodePath("StaticBody")
+
+[node name="StaticBody" type="StaticBody3D" parent="GridMap/Tile7"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GridMap/Tile7/StaticBody"]
+shape = SubResource("ConcavePolygonShape3D_xwub5")
+
+[node name="Tile8" type="MeshInstance3D" parent="GridMap"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 1)
+mesh = SubResource("BoxMesh_mg3nh")
+skeleton = NodePath("StaticBody")
+
+[node name="StaticBody" type="StaticBody3D" parent="GridMap/Tile8"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GridMap/Tile8/StaticBody"]
+shape = SubResource("ConcavePolygonShape3D_xwub5")
+
+[node name="Tile9" type="MeshInstance3D" parent="GridMap"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
+mesh = SubResource("BoxMesh_mg3nh")
+skeleton = NodePath("StaticBody")
+
+[node name="StaticBody" type="StaticBody3D" parent="GridMap/Tile9"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GridMap/Tile9/StaticBody"]
+shape = SubResource("ConcavePolygonShape3D_xwub5")
+
+[node name="BaseFloorTile" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_mg3nh")
+skeleton = NodePath("StaticBody")
+
+[node name="StaticBody" type="StaticBody3D" parent="BaseFloorTile"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BaseFloorTile/StaticBody"]
+shape = SubResource("ConcavePolygonShape3D_xwub5")

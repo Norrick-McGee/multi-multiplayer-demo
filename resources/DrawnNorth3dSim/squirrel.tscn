@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3 uid="uid://dgessyt8swxdd"]
+
+[ext_resource type="Texture2D" uid="uid://2qhikh73jops" path="res://assets/Nutty/Nutty/Idle.png" id="1_1jpw3"]
+[ext_resource type="Script" path="res://resources/DrawnNorth3dSim/sprite_manager.gd" id="1_6i4nx"]
+[ext_resource type="Script" path="res://resources/DrawnNorth3dSim/squirrel.gd" id="1_d35dr"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3tl3l"]
+radius = 0.02
+height = 0.15
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_qcyex"]
+radius = 0.01
+height = 0.1
+
+[sub_resource type="PrismMesh" id="PrismMesh_4ijds"]
+size = Vector3(0.1, 0.05, 0.05)
+
+[node name="Squirrel" type="CharacterBody3D"]
+script = ExtResource("1_d35dr")
+
+[node name="SpriteManager" type="Node3D" parent="." node_paths=PackedStringArray("LSprite", "RSprite")]
+script = ExtResource("1_6i4nx")
+LSprite = NodePath("LeftSprite3D")
+RSprite = NodePath("RightSprite3D")
+
+[node name="CenterSprite3D" type="Sprite3D" parent="SpriteManager"]
+texture = ExtResource("1_1jpw3")
+hframes = 2
+
+[node name="LeftSprite3D" type="Sprite3D" parent="SpriteManager"]
+transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, 0, 0, -0.03)
+texture = ExtResource("1_1jpw3")
+hframes = 2
+
+[node name="RightSprite3D" type="Sprite3D" parent="SpriteManager"]
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 0, 0, 0.03)
+texture = ExtResource("1_1jpw3")
+hframes = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0751065, 0)
+shape = SubResource("CapsuleShape3D_3tl3l")
+
+[node name="Compass" type="Node3D" parent="."]
+
+[node name="ArrowBodyMesh" type="MeshInstance3D" parent="Compass"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.005, 0.15, 0)
+mesh = SubResource("CapsuleMesh_qcyex")
+skeleton = NodePath("../..")
+
+[node name="ArrowHeadMesh" type="MeshInstance3D" parent="Compass"]
+transform = Transform3D(1.31134e-07, 1, 3.82137e-15, -4.37114e-08, 1.91069e-15, 1, 1, -1.31134e-07, 4.37114e-08, 0.0599749, 0.144021, 0)
+mesh = SubResource("PrismMesh_4ijds")
+skeleton = NodePath("../ArrowBodyMesh")
