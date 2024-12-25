@@ -6,7 +6,7 @@ var eNetPeer = ENetMultiplayerPeer.new()
 
 func conn_init(conn:Dictionary):
 	"""
-	conn= {
+	conn = {
 			'type':'client', # or host, (ipv4 will not be present if type is host)
 			'ipv4':'127.0.0.1', 
 			'port':6767
