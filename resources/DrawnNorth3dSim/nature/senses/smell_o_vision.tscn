@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8yup2qi640wu"]
+
+[ext_resource type="Script" path="res://resources/DrawnNorth3dSim/nature/senses/smell_o_vision.gd" id="1_1g2mv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lviy2"]
+size = Vector3(2, 0.5, 1.5)
+
+[node name="Smell-o-vision" type="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.415035, 0.900799)
+monitorable = false
+script = ExtResource("1_1g2mv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_lviy2")

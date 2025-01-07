@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://cem1ltn6c3bvj"]
+
+[node name="parallel_sim" type="Node3D"]
+
+[node name="world_root_1" type="Node3D" parent="."]

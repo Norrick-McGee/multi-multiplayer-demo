@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://18lg0sw2nx0v"]
+
+[ext_resource type="Texture2D" uid="uid://bovo5xh1yctj0" path="res://assets/Nutty/Acorn.png" id="1_u8yyq"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_hurta"]
+
+[node name="Acorn" type="Node3D"]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+texture = ExtResource("1_u8yyq")
+
+[node name="Sprite3D2" type="Sprite3D" parent="."]
+transform = Transform3D(0.0342366, 0, 0.999414, 0, 1, 0, -0.999414, 0, 0.0342366, 0, 0, 0)
+texture = ExtResource("1_u8yyq")
+
+[node name="ScentRadius" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ScentRadius"]
+shape = SubResource("SphereShape3D_hurta")

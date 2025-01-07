@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=3 uid="uid://ufdn136gbbwo"]
+
+[ext_resource type="ArrayMesh" uid="uid://bmt3m6lf6go4" path="res://assets/quirky-animals/Quirky Series - FREE Animals v1.4/3D Files/OBJ/Muskrat_LOD0.obj" id="1_6rk2p"]
+[ext_resource type="Script" path="res://resources/DrawnNorth3dSim/nature/squirrel.gd" id="1_o15gp"]
+[ext_resource type="PackedScene" uid="uid://c0utmiup6ylck" path="res://resources/DrawnNorth3dSim/nature/senses/scent.tscn" id="3_bsjcp"]
+[ext_resource type="PackedScene" uid="uid://c8yup2qi640wu" path="res://resources/DrawnNorth3dSim/nature/senses/smell_o_vision.tscn" id="4_5c877"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_72v67"]
+radius = 0.22
+height = 0.75
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_xsrny"]
+radius = 0.03
+height = 0.2
+
+[sub_resource type="SphereMesh" id="SphereMesh_1q448"]
+radius = 0.03
+height = 0.06
+
+[node name="Squirrel" type="CharacterBody3D" node_paths=PackedStringArray("idea_mesh")]
+script = ExtResource("1_o15gp")
+idea_mesh = NodePath("idea_mesh")
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_6rk2p")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.22, 0)
+shape = SubResource("CapsuleShape3D_72v67")
+
+[node name="idea_mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.788468, 0.282116)
+visible = false
+mesh = SubResource("CapsuleMesh_xsrny")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="idea_mesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.14724, 0)
+mesh = SubResource("SphereMesh_1q448")
+
+[node name="Smell" parent="." instance=ExtResource("3_bsjcp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.341549, 0)
+
+[node name="Smell-o-vision" parent="." instance=ExtResource("4_5c877")]
