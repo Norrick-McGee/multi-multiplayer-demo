@@ -6,19 +6,19 @@
 [ext_resource type="PackedScene" uid="uid://b5roh0aespiev" path="res://GodotUtils/ControllerUtils/PilotCam.tscn" id="4_jpe7o"]
 
 [node name="NorthSim" type="Node3D" node_paths=PackedStringArray("focus")]
-transform = Transform3D(0.909563, 0, 0.415567, 0, 1, 0, -0.415567, 0, 0.909563, 0, 0, 0)
+transform = Transform3D(0.909563, 0, 0.415567, 0, 1, 0, -0.415567, 0, 0.909563, 0, 0, 1.52833)
 script = ExtResource("1_1j2jh")
 focus = NodePath("Squirrel")
 
 [node name="GridMap" parent="." instance=ExtResource("1_s3qey")]
 
 [node name="Squirrel" parent="." node_paths=PackedStringArray("target") instance=ExtResource("2_bfe2u")]
-transform = Transform3D(0.839032, 0, 0.544419, 0, 1, 0, -0.544419, 0, 0.839032, -0.246659, 0.0509429, 0.601185)
+transform = Transform3D(-0.408276, 0, 0.913315, 0, 1, 0, -0.913315, 0, -0.408276, -0.243315, 0.0509478, 0.758356)
 character_name = "Flora"
 target = NodePath("../Squirrel2")
 
 [node name="Squirrel2" parent="." node_paths=PackedStringArray("target") instance=ExtResource("2_bfe2u")]
-transform = Transform3D(-0.838896, 0, -0.544331, 0, 1, 0, 0.544331, 0, -0.838896, -0.900578, 0.0509322, -0.426574)
+transform = Transform3D(0.408122, 0, -0.912972, 0, 1, 0, 0.912972, 0, 0.408122, 1.53509, 0.0509425, 0.414731)
 character_name = "Hilda"
 target = NodePath("../Squirrel")
 

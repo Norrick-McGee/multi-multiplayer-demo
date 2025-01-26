@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://38vbuh871563"]
+
+[ext_resource type="PackedScene" uid="uid://cem1ltn6c3bvj" path="res://resources/DrawnNorth3dSim/parallel_sim/dimension.tscn" id="1_rtcpp"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_1ouuw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ugq0n"]
+albedo_color = Color(0, 0, 0, 1)
+
+[node name="Singularity" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_1ouuw")
+surface_material_override/0 = SubResource("StandardMaterial3D_ugq0n")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.893426, 0.44921, 0, -0.44921, 0.893426, 0, 3.2104, 4.413)
+
+[node name="dimension_a" parent="." node_paths=PackedStringArray("orbit_origin") instance=ExtResource("1_rtcpp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.40226, 0)
+orbit_axis = 0
+orbit_origin = NodePath("..")
+
+[node name="dimension_b" parent="." node_paths=PackedStringArray("orbit_origin") instance=ExtResource("1_rtcpp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.82333)
+orbit_origin = NodePath("..")

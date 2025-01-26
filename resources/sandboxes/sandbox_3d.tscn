@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwt2ejdflqadl"]
+
+[ext_resource type="Script" path="res://GodotUtils/destination_rotation.gd" id="1_4cqcr"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_f0h8k"]
+
+[node name="sandbox3d" type="Node3D"]
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+script = ExtResource("1_4cqcr")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("PrismMesh_f0h8k")
+skeleton = NodePath("../..")
+
+[node name="CharacterBody3D2" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 4, -4)
+script = ExtResource("1_4cqcr")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D2"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("PrismMesh_f0h8k")
+skeleton = NodePath("../..")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.851077, 0.525041, 0, -0.525041, 0.851077, 2.51519, 3.8054, 4.37764)
