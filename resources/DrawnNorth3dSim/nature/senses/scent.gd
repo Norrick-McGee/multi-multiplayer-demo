@@ -1,11 +1,11 @@
 extends Area3D
 class_name Scent3D
+@export var smell_id: int = ResourceUID.create_id()
+@export var smell_source: Node3D
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	if smell_source == null: 
+		smell_source = get_parent()
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass

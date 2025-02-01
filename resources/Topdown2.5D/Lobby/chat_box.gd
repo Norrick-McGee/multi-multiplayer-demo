@@ -1,4 +1,5 @@
 extends VBoxContainer
+class_name ChatBox
 
 @onready var chat_display = $RichTextLabel
 @onready var chat_edit = $LineEdit

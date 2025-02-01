@@ -20,7 +20,13 @@ transform = Transform3D(1, 0, 0, 0, 0.893426, 0.44921, 0, -0.44921, 0.893426, 0,
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.40226, 0)
 orbit_axis = 0
 orbit_origin = NodePath("..")
+self_rotation_speed = 1.5
+rotation_mode = 2
 
 [node name="dimension_b" parent="." node_paths=PackedStringArray("orbit_origin") instance=ExtResource("1_rtcpp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.82333)
 orbit_origin = NodePath("..")
+rotation_mode = 1
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.125541, 0.992088, 0, -0.992088, 0.125541, 0, 3.03811, 0)

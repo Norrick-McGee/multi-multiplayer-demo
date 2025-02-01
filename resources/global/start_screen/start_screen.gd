@@ -4,7 +4,8 @@ signal start_game(game_context: Array)
 
 func get_user_attributes() -> Dictionary:
 	return {
-		'name':get_node("UserDetailsPanel/NameLineEdit").text
+		'name':get_node("UserDetailsPanel/NameLineEdit").text,
+		'color':get_node("UserDetailsPanel/ColorPicker").color
 	}
 	
 func get_ipv4():
@@ -22,7 +23,7 @@ func get_game_type():
 
 func _on_host_button_pressed():
 	var game_context = {
-		"user":get_user_attributes(),
+		"user":get_user_attributes(), 
 		"conn":{
 			'type':'host',
 			'port':6767

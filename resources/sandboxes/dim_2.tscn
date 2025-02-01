@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://ca5wnautjt3re"]
+
+[ext_resource type="Script" path="res://resources/sandboxes/dim_2.gd" id="1_mtb3x"]
+[ext_resource type="PackedScene" uid="uid://6pnxiao6drax" path="res://resources/DrawnNorth3dSim/north_sim.tscn" id="2_nx001"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_3ob43"]
+
+[sub_resource type="World3D" id="World3D_ggldc"]
+
+[node name="dim2" type="Node3D"]
+script = ExtResource("1_mtb3x")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_3ob43")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.280834, -0.409023, -0.868235, 0, 0.904641, -0.426174, 0.959756, 0.119684, 0.254054, -2.32748, -0.900372, 1.46232)
+
+[node name="SubViewport" type="SubViewport" parent="."]
+own_world_3d = true
+world_3d = SubResource("World3D_ggldc")
+handle_input_locally = false
+
+[node name="NorthSim" parent="SubViewport" instance=ExtResource("2_nx001")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.220851, 0.975308, 0, -0.975308, -0.220851, 0, 3.58257, 0)

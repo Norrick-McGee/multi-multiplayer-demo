@@ -2,6 +2,7 @@ extends Node
 
 @onready var StartScreen: StartScreen = $StartScreen
 @onready var NetMan: NetMan = $NetMan
+var GameMan: Node
 @export var DemoSelectionArray: Array[GameMode]
 
 func get_demo_scene_from_key(key):
@@ -38,7 +39,7 @@ func start_game(game_context: Dictionary):
 	___
 	game_context (Dictionary):
 	{
-		"player":{
+		"user":{
 			'name':'bubbins', 'color': Color(255.0, 255.0, 0.0, 0.999) # not yet implimented
 		},
 		"client":{
@@ -52,8 +53,11 @@ func start_game(game_context: Dictionary):
 	##############
 	# Networking
 	##############
-	NetMan.conn_init(game_context['conn'])
-
+	NetMan.user_context = game_context['user']
+	NetMan.conn_init(game_context['conn']) # This action modifies the game_context passed into it 
+	
+	game_context['netman'] = NetMan
+	
 	
 	##############
 	# game world
@@ -69,7 +73,10 @@ func start_game(game_context: Dictionary):
 	elif new_scene is Node3D:
 		print("This is a 3D node.")
 	else:
-		print("This is neither a 2D nor a 3D node.")
+		print("This is neither a 2D nor a 3D node. (probably control node for a lobby)")
+	
+	if "set_game_context" in new_scene:
+		new_scene.set_game_context(game_context)
 	
 	
 	# Hide StartScreen 

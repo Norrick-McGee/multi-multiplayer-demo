@@ -12,11 +12,12 @@ extends CharacterBody3D
 func _ready():
 	$"Smell-o-vision".connect("smell_entered", can_smell)
 	$"Smell-o-vision".connect("smell_exited", cant_smell)
+	
 
-
-func can_smell():
+func can_smell(scent: Scent3D):
 	self.has_idea = true
-func cant_smell():
+	print(scent.smell_id)
+func cant_smell(scent: Scent3D):
 	self.has_idea = false
 func handle_grav() -> Vector3: 
 	var gravitational_change_in_velocity: Vector3 = Vector3()
@@ -67,6 +68,6 @@ func _physics_process(delta):
 	velocity += handle_grav() * delta
 	#var rotation_step = rotate_towards_target(target, 5.5) * delta
 	# rotate_y(rotation_step)
-	rotate_towards_3D(target.position)
+	# rotate_towards_3D(target.position)
 	velocity += move_towards_target(target) * delta
 	move_and_slide()

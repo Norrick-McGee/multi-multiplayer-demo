@@ -1,15 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://cat661tcnmlq7"]
+[gd_scene load_steps=5 format=3 uid="uid://cat661tcnmlq7"]
 
+[ext_resource type="Script" path="res://resources/Topdown2.5D/Lobby/lobby.gd" id="1_fa7kl"]
 [ext_resource type="PackedScene" uid="uid://dnmx48vs8o53y" path="res://resources/Topdown2.5D/Lobby/CharacterSheet.tscn" id="1_fdhsf"]
+[ext_resource type="Script" path="res://resources/Topdown2.5D/Lobby/character_sheet_manager.gd" id="2_tpkb7"]
 [ext_resource type="Script" path="res://resources/Topdown2.5D/Lobby/chat_box.gd" id="2_xi1sk"]
 
-[node name="Lobby" type="Control"]
+[node name="Lobby" type="Control" node_paths=PackedStringArray("chat_box", "charcter_sheets")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_fa7kl")
+chat_box = NodePath("MainPanel/VBoxContainer/ChatBox")
+charcter_sheets = NodePath("MainPanel/VBoxContainer/CharacterSheetManager")
 
 [node name="MainPanel" type="ColorRect" parent="."]
 layout_mode = 0
@@ -45,28 +50,29 @@ horizontal_alignment = 1
 layout_mode = 2
 text = "Start Game ->"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MainPanel/VBoxContainer"]
+[node name="CharacterSheetManager" type="HBoxContainer" parent="MainPanel/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 6
+script = ExtResource("2_tpkb7")
 
-[node name="p1CharacterSheet" parent="MainPanel/VBoxContainer/HBoxContainer" instance=ExtResource("1_fdhsf")]
+[node name="p1CharacterSheet" parent="MainPanel/VBoxContainer/CharacterSheetManager" instance=ExtResource("1_fdhsf")]
 layout_mode = 2
 size_flags_horizontal = 3
 active = true
 
-[node name="p2CharacterSheet" parent="MainPanel/VBoxContainer/HBoxContainer" instance=ExtResource("1_fdhsf")]
+[node name="p2CharacterSheet" parent="MainPanel/VBoxContainer/CharacterSheetManager" instance=ExtResource("1_fdhsf")]
 layout_mode = 2
 size_flags_horizontal = 3
 active = false
 label_text = "Player2"
 
-[node name="p3CharacterSheet" parent="MainPanel/VBoxContainer/HBoxContainer" instance=ExtResource("1_fdhsf")]
+[node name="p3CharacterSheet" parent="MainPanel/VBoxContainer/CharacterSheetManager" instance=ExtResource("1_fdhsf")]
 layout_mode = 2
 size_flags_horizontal = 3
 active = false
 label_text = "Player3"
 
-[node name="p4CharacterSheet" parent="MainPanel/VBoxContainer/HBoxContainer" instance=ExtResource("1_fdhsf")]
+[node name="p4CharacterSheet" parent="MainPanel/VBoxContainer/CharacterSheetManager" instance=ExtResource("1_fdhsf")]
 layout_mode = 2
 size_flags_horizontal = 3
 active = false

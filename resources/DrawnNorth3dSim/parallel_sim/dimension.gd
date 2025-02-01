@@ -8,8 +8,23 @@ enum RotationMode { FIXED, FACE_LOCKED, FREE_ROTATION }
 @export var orbit_speed: float = 1.0 # Speed of orbiting (radians per second)
 @export var self_rotation_speed: float = 1.0 # Speed of self-rotation (only for FREE_ROTATION)
 @export var rotation_mode: RotationMode = RotationMode.FIXED
+@export var world_scene: PackedScene # The scene to load inside the dimension simulation
+@export var strength: float = 0.5 # Shader strength
+
 
 var current_rotation: float = 0.0
+var subviewport: SubViewport
+var world_3d: World3D
+
+var shader_material: ShaderMaterial
+
+func _ready() -> void:
+	# Get the SubViewport and set up the World3D
+	subviewport = $SubViewport
+
+	# Load the world scene into the dimension's World3D
+	var world_instance = world_scene.instantiate()
+	subviewport.add_child(world_instance)
 
 func _process(delta: float) -> void:
 	if not orbit_origin:
@@ -49,3 +64,15 @@ func _process(delta: float) -> void:
 		
 		RotationMode.FIXED:
 			pass  # No additional rotation
+
+@onready var mesh_instance = $MeshInstance3D
+@onready var sub_viewport = $SubViewport
+func _physics_process(delta):
+	# Get the texture from SubViewport
+	var viewport_texture = sub_viewport.get_texture()
+	
+	# Apply the texture to the MeshInstance3D's material
+	var material = StandardMaterial3D.new()
+	material.albedo_texture = viewport_texture
+	material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED  # Avoid lighting issues
+	mesh_instance.set_surface_override_material(0, material)
